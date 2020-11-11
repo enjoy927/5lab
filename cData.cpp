@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
 
 class CDataChain {
 public:
@@ -15,7 +16,7 @@ public:
 	//повертає підстрічку починаючи із nPos довжиною nLength. або до кінця послідовності
 	//std::string GetSubStr(int nPos, int nLength = -1);
 	//повертає всю згенеровану послідовність цифр
-	//const char *GetFullString();
+	virtual const char *GetFullString() = 0;
 protected:
 	//стрічка із згенерованою послідовністю цифр
 	std::string m_sChain;
@@ -35,5 +36,9 @@ public:
 			m_sChain += std::to_string(i);
 			i++;
 		}
+	}
+
+	const char *GetFullString() override {
+		return m_sChain.c_str();
 	}
 };
