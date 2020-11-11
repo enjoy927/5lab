@@ -1,0 +1,2 @@
+D:\projects\c++\5lab\x64\Debug\5 lab.exe
+D:\projects\c++\5lab\x64\Debug\5 lab.pdb
