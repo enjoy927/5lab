@@ -1,9 +1,13 @@
 #include <iostream>
 #include <string>
-#include "cData.cpp"
+#include "cWork.cpp"
 
 int main() {
 	CDataSimple ds;
-	ds.Generate(16, 20);
+	CWorkspace ws(ds);
+	//ds.Generate(15, 20);
+	std::string path = "saving.txt";
+	ws.Load(path);
+	std::cout << ws.GetChainString() << std::endl;
 	return 0;
 }

@@ -16,6 +16,7 @@ public:
 	//std::string GetSubStr(int nPos, int nLength = -1);
 	//повертає всю згенеровану послідовність цифр
 	virtual const char *GetFullString() = 0;
+	virtual void SetM_sChain(std::string str) = 0;
 protected:
 	//стрічка із згенерованою послідовністю цифр
 	std::string m_sChain;
@@ -39,5 +40,9 @@ public:
 
 	const char *GetFullString() override {
 		return m_sChain.c_str();
+	}
+
+	void SetM_sChain(std::string str) override {
+		m_sChain = str;
 	}
 };
