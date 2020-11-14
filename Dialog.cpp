@@ -39,8 +39,6 @@ public:
 		int nCommand = 1;
 
 		while (nCommand) {
-			std::cout << std::endl;
-
 			for (size_t i = 0; i < m_aCommands.size(); i++)
 				std::cout << i << ". " << m_aCommands[i]->GetName() << std::endl;
 			std::cout << "Enter command:";
@@ -49,6 +47,9 @@ public:
 				m_aCommands[nCommand]->Run(m_refWorkspace);
 			else
 				break;
+
+			system("pause");
+			system("cls");
 		}
 
 	}

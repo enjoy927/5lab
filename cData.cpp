@@ -36,6 +36,7 @@ public:
 			m_sChain += std::to_string(i);
 			i++;
 		}
+		m_sChain += "\n";
 	}
 
 	const char *GetFullString() override {
