@@ -29,14 +29,15 @@ public:
 	//Реалізація генератора повної послідовності цифр
 	void Generate(int nDepth, int nMaxLength = 0) override {
 		int i = 0;
-		while (size(m_sChain) < nMaxLength) {
+		std::string generateStr = "";
+		while (size(generateStr) < nMaxLength) {
 			if (i > nDepth)
 				break;
 
-			m_sChain += std::to_string(i);
+			generateStr += std::to_string(i);
 			i++;
 		}
-		m_sChain += "\n";
+		m_sChain += generateStr + "\n";
 	}
 
 	const char *GetFullString() override {
