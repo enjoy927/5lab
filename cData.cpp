@@ -3,8 +3,8 @@
 
 class CDataChain {
 public:
-	//CDataChain(void);
-	//virtual ~CDataChain(void);
+	CDataChain(void);
+	virtual ~CDataChain(void);
 	//віртуальна функція, що має генерувати повну послідовність цифр.
 	virtual void Generate(int nDepth, int nMaxLength = 0) = 0;
 	//повертає довжину згенерованої послідовності цифр.
@@ -24,12 +24,13 @@ protected:
 
 class CDataSimple: public CDataChain {
 public:
-	//CDataSimple(void) {}
-	//~CDataSimple(void) override {}
+	CDataSimple(void) {}
+	~CDataSimple(void) override {}
 	//Реалізація генератора повної послідовності цифр
 	void Generate(int nDepth, int nMaxLength = 0) override {
 		int i = 0;
 		std::string generateStr = "";
+		std::cout << size(generateStr) << " Size\n";
 		while (size(generateStr) < nMaxLength) {
 			if (i > nDepth)
 				break;
