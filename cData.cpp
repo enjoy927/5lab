@@ -31,7 +31,7 @@ public:
 		int i = 0;
 		std::string generateStr = "";
 		std::cout << size(generateStr) << " Size\n";
-		while (size(generateStr) < nMaxLength) {
+		while (LengthString(generateStr) < nMaxLength) {
 			if (i > nDepth)
 				break;
 
@@ -43,6 +43,17 @@ public:
 
 	const char *GetFullString() override {
 		return m_sChain.c_str();
+	}
+
+	int LengthString(std::string str) {
+		int i = 0;
+		int length = 0;
+		while (str[i] != '\0') {
+			length++;
+			i++;
+		}
+
+		return length;
 	}
 
 	void SetM_sChain(std::string str) override {
