@@ -7,7 +7,10 @@ public:
 	CWorkspace(CDataChain &data): m_refChain(data) {}
 	//~CWorkspace(void) {}
 	//Ініціалізує повну послідовність цифр
-	//void Init(int nDepth, int nLength);
+	void Init(int nDepth, int nLength) {
+		m_refChain.Generate(nDepth, nLength);
+	}
+
 	//Повертає стрічку із повною послідовністю цифр.
 	const char *GetChainString() {
 		return m_refChain.GetFullString();
