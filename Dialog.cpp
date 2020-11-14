@@ -14,14 +14,17 @@ public:
 	//Отримання назви команди
 	const char *GetName() { return m_sName.c_str(); }
 	//Виклик зв"язаної функції
-	void Run(CWorkspace &ws) {		m_pFunc(ws);
+	void Run(CWorkspace &ws) {
+		m_pFunc(ws);
 	}
 private:
 	//Назва команди
 	std::string m_sName;
 	//Вказівник на функцію, що буде використовуватися для виконання користувацьких команд
 	ptDlgCommandFunc m_pFunc;
-};class CDialogManager {
+};
+
+class CDialogManager {
 public:
 	CDialogManager(CWorkspace &ws): m_refWorkspace(ws) {
 		m_aCommands.push_back(new CDlgCommand("Quit"));
@@ -36,20 +39,22 @@ public:
 		int nCommand = 1;
 
 		while (nCommand) {
+			std::cout << std::endl;
+
 			for (size_t i = 0; i < m_aCommands.size(); i++)
 				std::cout << i << ". " << m_aCommands[i]->GetName() << std::endl;
 			std::cout << "Enter command:";
 			std::cin >> nCommand;
 			if ((nCommand > 0) && (nCommand < (int)m_aCommands.size()))
 				m_aCommands[nCommand]->Run(m_refWorkspace);
+			else
+				break;
+		}
 
-			system("pause");
-			system("cls");
-		}
 	}
 private:
 	//Вектор вказівників на зареєстровані команди
 	std::vector<CDlgCommand *> m_aCommands;
 	//Зсилка на робочий простір
 	CWorkspace &m_refWorkspace;
-};
+};
