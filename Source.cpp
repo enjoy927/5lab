@@ -8,9 +8,9 @@ void Save(CWorkspace &ws) {
 	std::cin >> path;
 	path += ".txt";
 	if (ws.Save(path))
-		std::cout << "Successfuly";
+		std::cout << "Successfuly\n";
 	else
-		std::cout << "Error";
+		std::cout << "Error\n";
 }
 
 void Load(CWorkspace &ws) {
@@ -19,10 +19,10 @@ void Load(CWorkspace &ws) {
 	std::cin >> path;
 	path += ".txt";
 	if (ws.Load(path))
-		std::cout << "Successfuly.";
+		std::cout << "Successfuly.\n";
 	else {
 		std::cout << "Error. ";
-		std::cout << "No such file";
+		std::cout << "No such file\n";
 	}
 }
 
