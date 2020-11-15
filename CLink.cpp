@@ -2,11 +2,13 @@
 #include <vector>
 #include "cData.cpp"
 
-typedef std::vector<CLink *> LinksArray;
 class CLink {
 public:
 	CLink(CDataChain &refChain): m_refChain(refChain) {}
-	//virtual ~CLink(void);
+
+	virtual ~CLink(void) {
+		delete this;
+	}
 	
 	//Пробує прив"язати об"єкт до підстрічки у послідовності
 	//bool Attach(const char *sSubStr);
@@ -17,10 +19,21 @@ public:
 	//Зберігає об"єкт у вихідному потоці
 	virtual bool Save(std::ostream &so) {
 		so << m_nPos << " " << m_nSize << std::endl;
+		return true;
 	}
 
 	//Зчитує об"єкт із вхідного потоку
-	//virtual bool Load(std::istream &is);
+	virtual bool Load(std::istream &is) {
+
+	}
+
+	void SetM_nPos(int nPos) {
+		m_nPos = nPos;
+	}
+
+	void SetM_nSize(int nSize) {
+		m_nSize = nSize;
+	}
 protected:
 	//Посилання на контейнер з повною послідовністю
 	CDataChain &m_refChain;
@@ -29,3 +42,5 @@ protected:
 	//Довжина підстрічки, до якої прив"язується об"єкт
 	int m_nSize;
 };
+
+typedef std::vector<CLink *> LinksArray;

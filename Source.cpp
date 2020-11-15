@@ -57,15 +57,18 @@ void Find(CWorkspace &ws) {
 
 
 int main() {
+	std::cout << "test";
 	CDataSimple ds;
 	CWorkspace ws(ds);
-	CDialogManager mgr(ws);
+	/*CDialogManager mgr(ws);
 	mgr.RegisterCommand("Init sequence", Init);
 	mgr.RegisterCommand("Show sequence", ShowFullSequence);
 	mgr.RegisterCommand("Find substring", Find);
 	mgr.RegisterCommand("Save", Save);
-	mgr.RegisterCommand("Load", Load);
+	mgr.RegisterCommand("Load", Load);*/
 
-	mgr.Run();
+	Save(ws);
+
+	//mgr.Run();
 	return 0;
 }
