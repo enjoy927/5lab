@@ -11,7 +11,7 @@ public:
 	//size_t GetLength();
 	//повертає позицію входження підстрічки sSubStr починаючи із nPos.
 	// -1, якщо підстрічки не знайдено
-	//int Find(const char *sSubStr, int nPos = 0);
+	virtual int Find(const char *sSubStr, int nPos = 0) = 0;
 	//повертає підстрічку починаючи із nPos довжиною nLength. або до кінця послідовності
 	//std::string GetSubStr(int nPos, int nLength = -1);
 	//повертає всю згенеровану послідовність цифр
@@ -46,5 +46,37 @@ public:
 
 	void SetM_sChain(std::string str) override {
 		m_sChain = str;
+	}
+
+	int Find(const char *sSubStr, int nPos = 0) {
+		bool f = false;
+		std::string sSubStr1 = sSubStr;
+		int resultId = -1;
+		for (int i = nPos; i < size(m_sChain); i++) {
+			if (m_sChain[i] == sSubStr1[0]) {
+				if (size(sSubStr1) <= size(m_sChain) - i) {
+					int count = 0;
+					int id = i;
+					resultId = i;
+
+					for (int j = 0; j < size(sSubStr1); j++) {
+						if (m_sChain[id] == sSubStr1[j]) {
+							count++;
+							id++;
+						}
+					}
+
+					if (count == size(sSubStr1)) {
+						f = true;
+						break;
+					}
+				}
+			}
+		}
+
+		if (f)
+			return resultId;
+		else
+			return -1;
 	}
 };

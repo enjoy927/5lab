@@ -41,6 +41,20 @@ void ShowFullSequence(CWorkspace &ws) {
 	std::cout << ws.GetChainString() << std::endl;
 }
 
+void Find(CWorkspace &ws) {
+	std::string str;
+	int pos;
+	std::cout << "Enter the line, you want to find: ";
+	std::cin >> str;
+	std::cout << "Enter the position: ";
+	std::cin >> pos;
+
+	if (ws.Find(str.c_str(), pos) == -1)
+		std::cout << "The line not found\n";
+	else
+		std::cout << "Id from the first occurrence " << ws.Find(str.c_str(), pos) << std::endl;
+}
+
 
 int main() {
 	CDataSimple ds;
@@ -48,6 +62,7 @@ int main() {
 	CDialogManager mgr(ws);
 	mgr.RegisterCommand("Init sequence", Init);
 	mgr.RegisterCommand("Show sequence", ShowFullSequence);
+	mgr.RegisterCommand("Find substring", Find);
 	mgr.RegisterCommand("Save", Save);
 	mgr.RegisterCommand("Load", Load);
 
