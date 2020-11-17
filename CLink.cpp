@@ -4,7 +4,10 @@
 
 class CLink {
 public:
-	CLink(CDataChain &refChain): m_refChain(refChain) {}
+	CLink(CDataChain &refChain): m_refChain(refChain) {
+		m_nPos = -1;
+		m_nSize = -1;
+	}
 
 	virtual ~CLink(void) {
 		delete this;
@@ -23,8 +26,35 @@ public:
 	}
 
 	//Зчитує об"єкт із вхідного потоку
-	virtual bool Load(std::istream &is) {
+	virtual bool Load(std::istream &is, int fCheck = 3) {
+		std::string str;
+		int i = 0;
+		while (std::getline(is, str)) {
+			if (i == fCheck) {
+				if (str == "")
+					std::cout << "Error load";
+				else {
+					std::string strNum;
+					int j = 0;
+					while (str[j] != ' ') {
+						strNum += str[j];
+						j++;
+					}
+					m_nPos = std::stoi(strNum);
+					strNum = "";
+					for (++j; j < size(str); j++) {
+						strNum += str[j];
+					}
+					m_nSize = std::stoi(strNum);
+				}
 
+				return true;
+				break;
+			}
+
+			i++;
+		}
+		return false;
 	}
 
 	void SetM_nPos(int nPos) {
@@ -33,6 +63,10 @@ public:
 
 	void SetM_nSize(int nSize) {
 		m_nSize = nSize;
+	}
+
+	void GetInform() {
+		std::cout << m_nPos << "|" << m_nSize << std::endl;
 	}
 protected:
 	//Посилання на контейнер з повною послідовністю

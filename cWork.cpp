@@ -43,39 +43,28 @@ public:
 			return false;
 		
 		std::string str, resultStr;
-		int i = 0, fCheck = -1;
-		bool f = false;
+		int i = 0;
 		while (std::getline(loadFile, str)) {
-			if (i = 0)
+			if (i == 0) {
+				i++;
 				continue;
+			}
 
 			if (str == "") {
-				f = true;
-				fCheck = i + 1;
-			}
+				// i + 1 - рядок із кількістю links
 
-			if (f) {
-				if (i > fCheck) {
-					std::string strNum;
-					int j = 0;
-					while (str[j] != ' ') {
-						strNum += str[j];
-						j++;
-					}
-					int position = std::stoi(strNum);
-					strNum = "";
-					for (++j; j < size(str); j++) {
-						strNum += str[j];
-					}
-					int sizeLink = std::stoi(strNum);
+				for (int j = 0; j < i + 1; j++) {
+					AddLink(-1, -1, new CLink(m_refChain));
+					m_aLinks[m_aLinks.size() - 1]->Load(loadFile, i + j + 2);
+					m_aLinks[m_aLinks.size() - 1]->GetInform();
 				}
-			} else {
-				m_refChain.SetM_sChain(m_refChain.GetFullString() + str);
+				break;
 			}
 
+
+			m_refChain.SetM_sChain(m_refChain.GetFullString() + str);
 			i++;
 		}
-		m_refChain.SetM_sChain(resultStr);
 
 		loadFile.close();
 

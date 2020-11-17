@@ -57,7 +57,7 @@ void Find(CWorkspace &ws) {
 
 
 int main() {
-	std::cout << "test";
+	std::cout << "prop\n";
 	CDataSimple ds;
 	CWorkspace ws(ds);
 	/*CDialogManager mgr(ws);
@@ -67,8 +67,7 @@ int main() {
 	mgr.RegisterCommand("Save", Save);
 	mgr.RegisterCommand("Load", Load);*/
 
-	Save(ws);
-
+	Load(ws);
 	//mgr.Run();
 	return 0;
 }
