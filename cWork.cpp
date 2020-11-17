@@ -55,8 +55,8 @@ public:
 
 				for (int j = 0; j < i + 1; j++) {
 					AddLink(-1, -1, new CLink(m_refChain));
-					m_aLinks[j]->Load(loadFile, i + j + 2);
-					m_aLinks[j]->GetInform();
+					m_aLinks[m_aLinks.size() - 1]->Load(loadFile);
+					m_aLinks[m_aLinks.size() - 1]->GetInform();
 				}
 				break;
 			}

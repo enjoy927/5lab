@@ -26,34 +26,27 @@ public:
 	}
 
 	//«читуЇ об"Їкт ≥з вх≥дного потоку
-	virtual bool Load(std::istream &is, int fCheck = 3) {
+	virtual bool Load(std::istream &is) {
 		std::string str;
-		int i = 0;
-		while (std::getline(is, str)) {
-			if (i == fCheck) {
-				if (str == "")
-					std::cout << "Error load";
-				else {
-					std::string strNum;
-					int j = 0;
-					while (str[j] != ' ') {
-						strNum += str[j];
-						j++;
-					}
-					m_nPos = std::stoi(strNum);
-					strNum = "";
-					for (++j; j < size(str); j++) {
-						strNum += str[j];
-					}
-					m_nSize = std::stoi(strNum);
-				}
-
-				return true;
-				break;
+		std::getline(is, str);
+		if (str == "")
+			std::cout << "Error load";
+		else {
+			std::string strNum;
+			int j = 0;
+			while (str[j] != ' ') {
+				strNum += str[j];
+				j++;
 			}
-
-			i++;
+			m_nPos = std::stoi(strNum);
+			strNum = "";
+			for (++j; j < size(str); j++) {
+				strNum += str[j];
+			}
+			m_nSize = std::stoi(strNum);
+			return true;
 		}
+
 		return false;
 	}
 
