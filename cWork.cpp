@@ -43,7 +43,7 @@ public:
 			return false;
 		
 		std::string str, resultStr;
-		int i = 0;
+		int i = 0, fCheck = -1;
 		while (std::getline(loadFile, str)) {
 			if (i == 0) {
 				i++;
@@ -52,12 +52,16 @@ public:
 
 			if (str == "") {
 				// i + 1 - рядок із кількістю links
+				fCheck = i + 2;
+			}
 
+			if (i == fCheck) {
 				for (int j = 0; j < i + 1; j++) {
 					AddLink(-1, -1, new CLink(m_refChain));
 					m_aLinks[m_aLinks.size() - 1]->Load(loadFile);
 					m_aLinks[m_aLinks.size() - 1]->GetInform();
 				}
+
 				break;
 			}
 

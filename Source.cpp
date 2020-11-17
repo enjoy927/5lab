@@ -57,6 +57,7 @@ void Find(CWorkspace &ws) {
 
 
 int main() {
+	std::cout << "1\n";
 	CDataSimple ds;
 	CWorkspace ws(ds);
 	/*CDialogManager mgr(ws);
