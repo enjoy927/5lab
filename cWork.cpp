@@ -59,7 +59,6 @@ public:
 				for (int j = 0; j < i + 1; j++) {
 					AddLink(-1, -1, new CLink(m_refChain));
 					m_aLinks[m_aLinks.size() - 1]->Load(loadFile);
-					m_aLinks[m_aLinks.size() - 1]->GetInform();
 				}
 
 				break;
@@ -85,6 +84,31 @@ public:
 
 		m_aLinks.push_back(pLink);
 		return true;
+	}
+
+	bool RemoveLink(int nPosInList) {
+		if (nPosInList < 0 || nPosInList >= m_aLinks.size()) {
+			std::cout << "Error no such element with this id in list";
+			return false;
+		}
+
+		m_aLinks.erase(m_aLinks.begin() + nPosInList);
+		return true;
+	}
+
+	bool GetAllLinks(LinksArray &aLinks) {
+		for (int i = 0; i < m_aLinks.size(); i++) {
+			aLinks.push_back(m_aLinks[i]);
+		}
+
+		return true;
+	}
+
+	void ShowAll() {
+		for (int i = 0; i < m_aLinks.size(); i++) {
+			std::cout << "Pos: " << m_aLinks[i]->GetM_nPos();
+			std::cout << " Size: " << m_aLinks[i]->GetM_nSize() << std::endl;
+		}
 	}
 private:
 	//Зсилка на контейнер (породжений від CDataChain) із послідовністю

@@ -55,6 +55,10 @@ void Find(CWorkspace &ws) {
 		std::cout << "Id from the first occurrence " << ws.Find(str.c_str(), pos) << std::endl;
 }
 
+void ShowAllLinks(CWorkspace &ws) {
+	ws.ShowAll();
+}
+
 
 int main() {
 	CDataSimple ds;
@@ -63,6 +67,7 @@ int main() {
 	mgr.RegisterCommand("Init sequence", Init);
 	mgr.RegisterCommand("Show sequence", ShowFullSequence);
 	mgr.RegisterCommand("Find substring", Find);
+	mgr.RegisterCommand("Show All Links", ShowAllLinks);
 	mgr.RegisterCommand("Save", Save);
 	mgr.RegisterCommand("Load", Load);
 

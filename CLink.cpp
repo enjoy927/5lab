@@ -57,6 +57,14 @@ public:
 	void SetM_nSize(int nSize) {
 		m_nSize = nSize;
 	}
+
+	int GetM_nPos() {
+		return m_nPos;
+	}
+
+	int GetM_nSize() {
+		return m_nSize;
+	}
 protected:
 	//Посилання на контейнер з повною послідовністю
 	CDataChain &m_refChain;
