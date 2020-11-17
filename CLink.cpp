@@ -57,10 +57,6 @@ public:
 	void SetM_nSize(int nSize) {
 		m_nSize = nSize;
 	}
-
-	void GetInform() {
-		std::cout << m_nPos << "|" << m_nSize << std::endl;
-	}
 protected:
 	//Посилання на контейнер з повною послідовністю
 	CDataChain &m_refChain;

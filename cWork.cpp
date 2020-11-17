@@ -52,7 +52,7 @@ public:
 
 			if (str == "") {
 				// i + 1 - рядок із кількістю links
-				fCheck = i + 2;
+				fCheck = i + 1;
 			}
 
 			if (i == fCheck) {
