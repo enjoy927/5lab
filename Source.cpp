@@ -59,19 +59,33 @@ void ShowAllLinks(CWorkspace &ws) {
 	ws.ShowAll();
 }
 
+void RemoveLink(CWorkspace &ws) {
+	int n = 0;
+	std::cout << "Enter the position, you want delete: ";
+	std::cin >> n;
+	if (ws.RemoveLink(n))
+		std::cout << "Successfuly\n";
+	else {
+		std::cout << "Error, element with id not exist";
+	}
+}
 
 int main() {
 	CDataSimple ds;
 	CWorkspace ws(ds);
-	CDialogManager mgr(ws);
-	mgr.RegisterCommand("Init sequence", Init);
-	mgr.RegisterCommand("Show sequence", ShowFullSequence);
-	mgr.RegisterCommand("Find substring", Find);
-	mgr.RegisterCommand("Show All Links", ShowAllLinks);
-	mgr.RegisterCommand("Save", Save);
-	mgr.RegisterCommand("Load", Load);
+	//CDialogManager mgr(ws);
+	//mgr.RegisterCommand("Init sequence", Init);
+	//mgr.RegisterCommand("Show sequence", ShowFullSequence);
+	//mgr.RegisterCommand("Find substring", Find);
+	//mgr.RegisterCommand("Show All Links", ShowAllLinks);
+	//mgr.RegisterCommand("Remove Link", RemoveLink);
+	//mgr.RegisterCommand("Save", Save);
+	//mgr.RegisterCommand("Load", Load);
 
 
-	mgr.Run();
+	Load(ws);
+	ShowAllLinks(ws);
+
+	//mgr.Run();
 	return 0;
 }

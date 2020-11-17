@@ -110,6 +110,23 @@ public:
 			std::cout << " Size: " << m_aLinks[i]->GetM_nSize() << std::endl;
 		}
 	}
+
+	//Добавляє новий лінк типу URL для першого входження підстрічки sSubStr
+	bool AddURL(const char *sSubStr, const char *sURL) {
+		if (m_refChain.Find(sSubStr) == -1)
+			return false;
+
+		CLinkURL *url = new CLinkURL(m_refChain);
+		int positionStart = m_refChain.Find(sSubStr);
+		std::string charToStr = sSubStr;
+
+		url->AddUrl(sURL);
+		url->SetM_nPos(positionStart);
+		url->SetM_nSize(size(charToStr));
+
+		m_aLinks.push_back(url);
+	}
+
 private:
 	//Зсилка на контейнер (породжений від CDataChain) із послідовністю
 	CDataChain &m_refChain;

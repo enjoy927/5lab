@@ -4,10 +4,7 @@
 
 class CLink {
 public:
-	CLink(CDataChain &refChain): m_refChain(refChain) {
-		m_nPos = -1;
-		m_nSize = -1;
-	}
+	CLink(CDataChain &refChain): m_refChain(refChain) {}
 
 	virtual ~CLink(void) {
 		delete this;
@@ -73,5 +70,21 @@ protected:
 	//Довжина підстрічки, до якої прив"язується об"єкт
 	int m_nSize;
 };
-
 typedef std::vector<CLink *> LinksArray;
+
+class CLinkURL: public CLink {
+public:
+	CLinkURL(CDataChain &refChain): m_refChain(refChain) {}
+
+	virtual ~CLinkURL(void) {
+		delete this;
+	}
+
+	void AddUrl(const char *sSubStr) {
+		m_sURL = sSubStr;
+	}
+
+private:
+	CDataChain &m_refChain;
+	std::string m_sURL;
+};
