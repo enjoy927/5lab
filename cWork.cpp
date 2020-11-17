@@ -23,7 +23,7 @@ public:
 		std::string save = GetChainString();
 		std::ofstream saveFile(sFilePath, std::fstream::app);
 
-		saveFile << size(save) << std::endl;
+		saveFile << size(save)-1 << std::endl;
 		saveFile << GetChainString() << std::endl;
 
 		saveFile << m_aLinks.size() << std::endl;
@@ -125,6 +125,22 @@ public:
 		url->SetM_nSize(size(charToStr));
 
 		m_aLinks.push_back(url);
+	}
+
+	//Добавляє новий лінк типу Person для першого входження підстрічки sSubStr
+	bool AddPerson(const char *sSubStr, int nGroup, const char *sName) {
+		if (m_refChain.Find(sSubStr) == -1)
+			return false;
+
+		CLinkPerson *person = new CLinkPerson(m_refChain);
+		std::string str = sSubStr;
+		int position = m_refChain.Find(sSubStr);
+		person->SetGroup(nGroup);
+		person->SetName(sName);
+		person->SetM_nSize(size(str));
+		person->SetM_nPos(position);
+
+		m_aLinks.push_back(person);
 	}
 
 private:

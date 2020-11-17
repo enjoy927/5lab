@@ -6,9 +6,7 @@ class CLink {
 public:
 	CLink(CDataChain &refChain): m_refChain(refChain) {}
 
-	virtual ~CLink(void) {
-		delete this;
-	}
+	virtual ~CLink(void) {}
 	
 	//Пробує прив"язати об"єкт до підстрічки у послідовності
 	//bool Attach(const char *sSubStr);
@@ -74,17 +72,32 @@ typedef std::vector<CLink *> LinksArray;
 
 class CLinkURL: public CLink {
 public:
-	CLinkURL(CDataChain &refChain): m_refChain(refChain) {}
+	CLinkURL(CDataChain &refChain): CLink(refChain) {}
 
-	virtual ~CLinkURL(void) {
-		delete this;
-	}
+	virtual ~CLinkURL(void) {}
 
 	void AddUrl(const char *sSubStr) {
 		m_sURL = sSubStr;
 	}
 
 private:
-	CDataChain &m_refChain;
 	std::string m_sURL;
+};
+
+class CLinkPerson: public CLink {
+public:
+	CLinkPerson(CDataChain *refChain): CLink(refChain) {}
+	virtual ~CLinkPerson(void) {}
+
+	void SetGroup(int group) {
+		m_nGroupCode = group;
+	}
+
+	void SetName(std::string name) {
+		m_sName = name;
+	}
+
+private:
+	int m_nGroupCode;
+	std::string m_sName;
 };

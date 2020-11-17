@@ -70,22 +70,48 @@ void RemoveLink(CWorkspace &ws) {
 	}
 }
 
+void AddPerson(CWorkspace &ws) {
+	std::string str;
+	std::cout << "Enter the line: ";
+	std::cin >> str;
+
+	int n;
+	std::cout << "Enter the num of group: ";
+	std::cin >> n;
+
+	std::string name;
+	std::cout << "Enter the name: ";
+	std::cin >> name;
+
+	ws.AddPerson(str.c_str(), n, name.c_str());
+}
+
+void AddLink(CWorkspace &ws) {
+	std::string str;
+	std::cout << "Enter the line: ";
+	std::cin >> str;
+
+	std::string url;
+	std::cout << "Enter the url: ";
+	std::cin >> url;
+
+	ws.AddURL(str.c_str(), url.c_str());
+}
+
 int main() {
 	CDataSimple ds;
 	CWorkspace ws(ds);
-	//CDialogManager mgr(ws);
-	//mgr.RegisterCommand("Init sequence", Init);
-	//mgr.RegisterCommand("Show sequence", ShowFullSequence);
-	//mgr.RegisterCommand("Find substring", Find);
-	//mgr.RegisterCommand("Show All Links", ShowAllLinks);
-	//mgr.RegisterCommand("Remove Link", RemoveLink);
-	//mgr.RegisterCommand("Save", Save);
-	//mgr.RegisterCommand("Load", Load);
+	CDialogManager mgr(ws);
+	mgr.RegisterCommand("Init sequence", Init);
+	mgr.RegisterCommand("Show sequence", ShowFullSequence);
+	mgr.RegisterCommand("Find substring", Find);
+	mgr.RegisterCommand("Add link", AddLink);
+	mgr.RegisterCommand("Show All Links", ShowAllLinks);
+	mgr.RegisterCommand("Remove Link", RemoveLink);
+	mgr.RegisterCommand("Add Person", AddPerson);
+	mgr.RegisterCommand("Save", Save);
+	mgr.RegisterCommand("Load", Load);
 
-
-	Load(ws);
-	ShowAllLinks(ws);
-
-	//mgr.Run();
+	mgr.Run();
 	return 0;
 }
