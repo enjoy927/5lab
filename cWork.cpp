@@ -146,6 +146,32 @@ public:
 		m_aLinks.push_back(person);
 	}
 
+	bool TestPosition(int nPos, LinksArray &aNearestLinks) {
+		if (nPos < 0 || nPos > m_aLinks.size() - 1)
+			return false;
+
+		for (int i = 0; i < m_aLinks.size(); i++) {
+			if (m_aLinks[i]->GetM_nPos() == nPos) {
+				aNearestLinks.push_back(m_aLinks[i]);
+			}
+		}
+		return true;
+	}
+
+	bool TestInterval(int nStartPos, int nEndPos, LinksArray &aNearestLinks) {
+		std::string chain = GetChainString();
+
+		if (nStartPos < 0 || nStartPos > nEndPos || nEndPos > size(chain) - 1)
+			return false;
+
+		for (int i = 0; i < m_aLinks.size(); i++) {
+			if (m_aLinks[i]->GetM_nPos() >= nStartPos && m_aLinks[i]->GetM_nPos() <= nEndPos)
+				aNearestLinks.push_back(m_aLinks[i]);
+		}
+
+		return true;
+	}
+
 private:
 	//Зсилка на контейнер (породжений від CDataChain) із послідовністю
 	CDataChain &m_refChain;

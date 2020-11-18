@@ -98,6 +98,36 @@ void AddLink(CWorkspace &ws) {
 	ws.AddURL(str.c_str(), url.c_str());
 }
 
+void TestPosition(CWorkspace &ws) {
+	std::cout << "Enter the position, you want to test: ";
+	int pos;
+	std::cin >> pos;
+	LinksArray links;
+	if (ws.TestPosition(pos, links)) {
+		std::cout << "Finded " << links.size() << " links\n";
+	} else {
+		std::cout << "Not such elements with position " << pos << std::endl;
+	}
+
+}
+
+void TestInterval(CWorkspace &ws) {
+	std::cout << "Enter the start position: ";
+	int start;
+	std::cin >> start;
+
+	std::cout << "Enter the end position: ";
+	int end;
+	std::cin >> end;
+
+	LinksArray links;
+	if (ws.TestInterval(start, end, links)) {
+		std::cout << "Finded " << links.size() << " links\n";
+	} else {
+		std::cout << "Not such links with numbers whoose place in range [" << start << " " << end << "]\n";
+	}
+}
+
 int main() {
 	CDataSimple ds;
 	CWorkspace ws(ds);
@@ -109,6 +139,8 @@ int main() {
 	mgr.RegisterCommand("Show All Links", ShowAllLinks);
 	mgr.RegisterCommand("Remove Link", RemoveLink);
 	mgr.RegisterCommand("Add Person", AddPerson);
+	mgr.RegisterCommand("Test Position", TestPosition);
+	mgr.RegisterCommand("Test Interval", TestInterval);
 	mgr.RegisterCommand("Save", Save);
 	mgr.RegisterCommand("Load", Load);
 

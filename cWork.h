@@ -33,6 +33,13 @@ public:
 	//Добавляє новий лінк типу Person для першого входження підстрічки sSubStr
 	bool AddPerson(const char *sSubStr, int nGroup, const char *sName);
 
+	//Перевіряє позицію nPos на наявність лінків. Повертає ті,що включають вказану позицію
+	bool TestPosition(int nPos, LinksArray &aNearestLinks);
+	
+	//Повертає всі лінки, що включають в себе хоч одну цифру з інтервалу [nStartPos,nEndPos)
+	bool TestInterval(int nStartPos, int nEndPos, LinksArray &aNearestLinks);
+
+
 private:
 	//Зсилка на контейнер (породжений від CDataChain) із послідовністю
 	CDataChain &m_refChain;
