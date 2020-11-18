@@ -32,5 +32,4 @@ public:
 	void SetM_sChain(std::string str);
 
 	int Find(const char *sSubStr, int nPos = 0);
-	}
 };

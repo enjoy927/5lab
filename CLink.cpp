@@ -66,9 +66,9 @@ protected:
 	//Посилання на контейнер з повною послідовністю
 	CDataChain &m_refChain;
 	//Позиція початку у повній послідовності
-	int m_nPos;
+	int m_nPos = -1;
 	//Довжина підстрічки, до якої прив"язується об"єкт
-	int m_nSize;
+	int m_nSize = -1;
 };
 typedef std::vector<CLink *> LinksArray;
 
@@ -88,7 +88,7 @@ private:
 
 class CLinkPerson: public CLink {
 public:
-	CLinkPerson(CDataChain *refChain): CLink(refChain) {}
+	CLinkPerson(CDataChain &refChain): CLink(refChain) {}
 	virtual ~CLinkPerson(void) {}
 
 	void SetGroup(int group) {

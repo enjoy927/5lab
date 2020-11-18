@@ -5,9 +5,9 @@
 
 class CLink {
 public:
-	CLink(CDataChain &refChain): m_refChain(refChain) {}
+	CLink(CDataChain &refChain);
 
-	virtual ~CLink(void) {}
+	virtual ~CLink(void);
 
 	//Пробує прив"язати об"єкт до підстрічки у послідовності
 	//bool Attach(const char *sSubStr);
@@ -52,7 +52,7 @@ private:
 
 class CLinkPerson: public CLink {
 public:
-	CLinkPerson(CDataChain *refChain);
+	CLinkPerson(CDataChain &refChain);
 	virtual ~CLinkPerson(void);
 
 	void SetGroup(int group);
