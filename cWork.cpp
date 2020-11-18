@@ -56,7 +56,8 @@ public:
 			}
 
 			if (i == fCheck) {
-				for (int j = 0; j < i + 1; j++) {
+				int end = stoi(str);
+				for (int j = 0; j < end; j++) {
 					AddLink(-1, -1, new CLink(m_refChain));
 					m_aLinks[m_aLinks.size() - 1]->Load(loadFile);
 				}
