@@ -1,5 +1,6 @@
-#include "cWork.cpp"
+#include "cWork.h"
 #include <vector>
+#include "Dialog.h"
 
 //Декларація типу функції, що буде використовуватися для виконання користувацьких команд
 typedef void (*ptDlgCommandFunc)(CWorkspace &ws);

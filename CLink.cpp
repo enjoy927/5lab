@@ -1,6 +1,8 @@
 #include <fstream>
 #include <vector>
-#include "cData.cpp"
+#include <string>
+#include "cData.h"
+#include "cLink.h"
 
 class CLink {
 public:
