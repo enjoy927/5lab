@@ -4,7 +4,7 @@
 class CDataChain {
 public:
 	//CDataChain(void);
-	//virtual ~CDataChain(void);
+	virtual ~CDataChain(void);
 	//віртуальна функція, що має генерувати повну послідовність цифр.
 	virtual void Generate(int nDepth, int nMaxLength = 0) = 0;
 	//повертає довжину згенерованої послідовності цифр.
