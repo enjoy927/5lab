@@ -7,7 +7,14 @@ CWorkspace::CWorkspace(CDataChain &data): m_refChain(data) {}
 //~CWorkspace(void) {}
 //Ініціалізує повну послідовність цифр
 void CWorkspace::Init(int nDepth, int nLength) {
-	m_refChain.Generate(nDepth, nLength);
+	if (nDepth != -1)
+		m_refChain.Generate(nDepth, nLength);
+	else {
+		CDataPi pi;
+		pi.Generate(-1, nLength);
+		m_refChain.SetM_sChain(pi.GetString());
+	}
+
 }
 
 	//Повертає стрічку із повною послідовністю цифр.
@@ -22,7 +29,7 @@ bool CWorkspace::Save(std::string &sFilePath) {
 	std::string save = GetChainString();
 	std::ofstream saveFile(sFilePath, std::fstream::app);
 
-	saveFile << size(save)-1 << std::endl;
+	saveFile << m_refChain.GetLength(save.c_str()) << std::endl;
 	saveFile << GetChainString() << std::endl;
 
 	saveFile << m_aLinks.size() << std::endl;

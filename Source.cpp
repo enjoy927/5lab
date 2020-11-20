@@ -128,11 +128,23 @@ void TestInterval(CWorkspace &ws) {
 	}
 }
 
+void InitPi(CWorkspace &ws) {
+	std::cout << "Enter the length: ";
+	int length;
+	std::cin >> length;
+
+	ws.Init(-1, length);
+}
+
+
+
 int main() {
+	std::cout << "123";
 	CDataSimple ds;
 	CWorkspace ws(ds);
 	CDialogManager mgr(ws);
 	mgr.RegisterCommand("Init sequence", Init);
+	mgr.RegisterCommand("Init sequence Pi", InitPi);
 	mgr.RegisterCommand("Show sequence", ShowFullSequence);
 	mgr.RegisterCommand("Find substring", Find);
 	mgr.RegisterCommand("Add link", AddLink);

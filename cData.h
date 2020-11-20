@@ -36,8 +36,20 @@ public:
 };
 
 class CDataPi: public CDataChain {
-	//CDataPi(void) {}
-	~CDataPi(void) {}
+public:
+	/*CDataPi(void) {}
+	~CDataPi(void) {}*/
 
-	void Generate(int nDepth = -1, int nLength = 0);
+	void Generate(int nDepth, int nLength = 0);
+
+	size_t GetLength(const char *sSubStr);
+	//повертаЇ позиц≥ю входженн€ п≥дстр≥чки sSubStr починаючи ≥з nPos.
+	// -1, €кщо п≥дстр≥чки не знайдено
+	int Find(const char *sSubStr, int nPos = 0);
+	//повертаЇ п≥дстр≥чку починаючи ≥з nPos довжиною nLength. або до к≥нц€ посл≥довност≥
+	//std::string GetSubStr(int nPos, int nLength = -1);
+	//повертаЇ всю згенеровану посл≥довн≥сть цифр
+	const char *GetFullString();
+	void SetM_sChain(std::string str);
+	std::string GetString();
 };
