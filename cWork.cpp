@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "CLink.h"
 #include "cWork.h"
 
 class CWorkspace {

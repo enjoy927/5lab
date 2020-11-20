@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 class CDataChain {
 public:
 	//CDataChain(void);
@@ -32,4 +33,11 @@ public:
 	void SetM_sChain(std::string str);
 
 	int Find(const char *sSubStr, int nPos = 0);
+};
+
+class CDataPi: public CDataChain {
+	//CDataPi(void) {}
+	~CDataPi(void) {}
+
+	void Generate(int nDepth = -1, int nLength = 0);
 };

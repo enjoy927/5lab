@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <iomanip>
 #include "cData.h"
 
 class CDataChain {
@@ -38,7 +39,7 @@ public:
 			generateStr += std::to_string(i);
 			i++;
 		}
-		m_sChain += generateStr + "\n";
+		m_sChain = generateStr + "\n";
 	}
 
 	const char *GetFullString() override {
@@ -79,5 +80,30 @@ public:
 			return resultId;
 		else
 			return -1;
+	}
+};
+
+class CDataPi: public CDataChain {
+	//CDataPi(void) {}
+	~CDataPi(void) {}
+
+	void Generate(int nDepth, int nLength = 0) override {
+		double Pi = 4 * atan(1);
+
+		std::ofstream file("data.txt");
+		file << std::setprecision(nLength) << Pi;
+		file.close();
+
+		std::string str = "";
+		std::ifstream inputFile("data.txt");
+		inputFile >> str;
+		inputFile.close();
+
+		for (int i = 0; i < size(str); i++) {
+			if (str[i] == '.')
+				continue;
+
+			m_sChain += str[i];
+		}
 	}
 };

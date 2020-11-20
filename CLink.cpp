@@ -1,7 +1,6 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include "cData.h"
 #include "cLink.h"
 
 class CLink {
