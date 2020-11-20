@@ -8,7 +8,7 @@ public:
 	//віртуальна функція, що має генерувати повну послідовність цифр.
 	virtual void Generate(int nDepth, int nMaxLength = 0) = 0;
 	//повертає довжину згенерованої послідовності цифр.
-	//size_t GetLength();
+	virtual size_t GetLength(const char *sSubStr) = 0;
 	//повертає позицію входження підстрічки sSubStr починаючи із nPos.
 	// -1, якщо підстрічки не знайдено
 	virtual int Find(const char *sSubStr, int nPos = 0) = 0;
@@ -29,7 +29,7 @@ public:
 	//Реалізація генератора повної послідовності цифр
 	void Generate(int nDepth, int nMaxLength = 0);
 	const char *GetFullString();
-
+	size_t GetLength(const char *sSubStr);
 	void SetM_sChain(std::string str);
 
 	int Find(const char *sSubStr, int nPos = 0);

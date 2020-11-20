@@ -129,23 +129,21 @@ void TestInterval(CWorkspace &ws) {
 }
 
 int main() {
-	//CDataSimple ds;
-	//CWorkspace ws(ds);
-	//CDialogManager mgr(ws);
-	//mgr.RegisterCommand("Init sequence", Init);
-	//mgr.RegisterCommand("Show sequence", ShowFullSequence);
-	//mgr.RegisterCommand("Find substring", Find);
-	//mgr.RegisterCommand("Add link", AddLink);
-	//mgr.RegisterCommand("Show All Links", ShowAllLinks);
-	//mgr.RegisterCommand("Remove Link", RemoveLink);
-	//mgr.RegisterCommand("Add Person", AddPerson);
-	//mgr.RegisterCommand("Test Position", TestPosition);
-	//mgr.RegisterCommand("Test Interval", TestInterval);
-	//mgr.RegisterCommand("Save", Save);
-	//mgr.RegisterCommand("Load", Load);
+	CDataSimple ds;
+	CWorkspace ws(ds);
+	CDialogManager mgr(ws);
+	mgr.RegisterCommand("Init sequence", Init);
+	mgr.RegisterCommand("Show sequence", ShowFullSequence);
+	mgr.RegisterCommand("Find substring", Find);
+	mgr.RegisterCommand("Add link", AddLink);
+	mgr.RegisterCommand("Show All Links", ShowAllLinks);
+	mgr.RegisterCommand("Remove Link", RemoveLink);
+	mgr.RegisterCommand("Add Person", AddPerson);
+	mgr.RegisterCommand("Test Position", TestPosition);
+	mgr.RegisterCommand("Test Interval", TestInterval);
+	mgr.RegisterCommand("Save", Save);
+	mgr.RegisterCommand("Load", Load);
 
-	//mgr.Run();
-
-	std::cout << "test";
+	mgr.Run();
 	return 0;
 }
